@@ -11,8 +11,8 @@ using System.IO;
 public class SaveMapMPS : MonoBehaviour {
 	
 	string[,] grid_type; 
-	public int coluna;
-	public int linha;
+	public int coluna = 100;
+	public int linha = 100;
 	public GameObject ta;
 	string name;
 	int canSave;
@@ -30,12 +30,18 @@ public class SaveMapMPS : MonoBehaviour {
 			}
 		}
 	}
+	void Start()
+	{
+		linha = MapSettings.rows;
+		coluna = MapSettings.columns;
+	}
+
 	void Update () 
 	{
 		if(TileSettings.canUseSave == true)
 		{
-				grid();
-				TileSettings.canUseSave = false;
+			grid();
+			TileSettings.canUseSave = false;
 		}
 		if(Input.GetKeyDown (KeyCode.F12) && canSave < 0)
 		{

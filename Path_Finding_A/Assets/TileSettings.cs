@@ -41,9 +41,6 @@ public class TileSettings : MonoBehaviour
 				grid_x[i] = i*1.2f;
 				grid_y[n] = n*1.2f;
 				grid_type[i,n] = "Null";
-				/*grid_type[i][n] = gameObject.GetComponent("TileSetting").data[1];
-           		if(grid_type[i][n] == "True")
-            		Instantiate(T, new Vector3(grid_x[i], 0, grid_y[n]), Quaternion.identity);*/
 			}
 		}
 	}
@@ -75,8 +72,15 @@ public class TileSettings : MonoBehaviour
 			SetGridType("MapSettings.mps");
 		}
 	}
-	void Start()
+	public void runcode()
 	{
+		linha = 10;
+		coluna = 10;
+		if(linha==10)
+		{
+			linha = MapSettings.rows;
+			coluna = MapSettings.columns;
+		}
 		grid ();
 		SetGridType("MapSettings.mps");
 		Tile.GetComponent<MapData> ().index = 0;
